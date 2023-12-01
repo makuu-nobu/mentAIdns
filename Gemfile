@@ -72,4 +72,10 @@ group :test do
 end
 
 gem 'pry-rails'
+<<<<<<< Updated upstream
 gem 'devise'
+=======
+gem 'devise'
+gem 'faker'
+gem 'bootstrap', '~> 5.0.2'
+>>>>>>> Stashed changes
