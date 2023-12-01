@@ -1,0 +1,23 @@
+body {
+    padding-top: 56px; /* Adjust based on the height of your header */
+    padding-bottom: 56px; /* Adjust based on the height of your footer */
+    margin: 0;
+}
+.custom-border{
+    width: 90vw;
+    height: 80vh;
+    margin: 20px auto;
+    border: 2px solid black;
+}
+.main-content {
+    padding: 20px;
+    border: 2px solid #000;
+    margin: 30px;
+}
+.main-content p {
+    text-align: center; 
+}
+.custom-main-size {
+    width: 100vw;
+    height: 100vh;
+}
