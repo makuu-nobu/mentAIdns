@@ -262,6 +262,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  faker
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
