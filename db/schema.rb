@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_12_01_090049) do
   create_table "answers", charset: "utf8", force: :cascade do |t|
-    t.string "username", null: false
     t.bigint "user_id", null: false
     t.bigint "question_id", null: false
     t.bigint "choice_id", null: false
@@ -42,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_090049) do
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
+    t.string "username", null: false
     t.integer "release_option", default: 0, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
