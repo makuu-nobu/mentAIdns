@@ -74,3 +74,5 @@ end
 gem 'pry-rails'
 gem 'devise'
 gem 'faker'
+gem 'bootstrap', '~> 5.0.2'
+gem 'faker'
