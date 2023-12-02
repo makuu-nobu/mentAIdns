@@ -10,7 +10,48 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-light">
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">Your Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">ホームへ戻る</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">今までの記録</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">診断を始める</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">サインイン</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">サインアウト</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid mt-4 custom-main-size">
+    <div class="row justify-content-center custom-border">
+      <div class="col-lg-6 main-content"> 
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer fixed-bottom bg-light text-center py-2">
+    <p>&copy; 2023 Your Rails 7 App</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
   </body>
 </html>
