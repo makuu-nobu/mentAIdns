@@ -37,8 +37,13 @@
       </ul>
     </div>
   </nav>
-
-    <%= yield %>
+  <div class="container-fluid mt-4 custom-main-size">
+    <div class="row justify-content-center custom-border">
+      <div class="col-lg-6 main-content"> 
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer fixed-bottom bg-light text-center py-2">
     <p>&copy; 2023 Your Rails 7 App</p>
