@@ -1,3 +1,18 @@
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* 背景に画像やスタイルを指定してカスタマイズすることが可能 */
+    /* background-image: url('path/to/custom-image.png'); */
+    /* background-size: 16px; */
+}
+
+/* 選択された時のスタイル（例：青い背景色） */
+input[type="radio"]:checked {
+background-color: blue;
+}
+
+
 body {
     padding-top: 56px; /* Adjust based on the height of your header */
     padding-bottom: 56px; /* Adjust based on the height of your footer */
@@ -25,4 +40,26 @@ body {
 .custom-main-size {
     width: 100vw;
     height: 100vh;
+}
+
+.question-text{
+    font-size: 2rem;
+}
+
+.options-container{
+    border-top: 2px solid black;
+}
+.auto-submit{
+    display: inline;
+}
+.options-container label{ 
+    display: block;
+    list-style: none;
+    border: 1px solid black;
+    margin: 3px;
+    padding: 5px;
+}
+
+.custom-btn{
+    visibility: hidden;
 }
