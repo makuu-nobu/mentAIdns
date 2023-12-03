@@ -2,7 +2,7 @@ class MentalsController < ApplicationController
     def index
     end
     def new
-        @form = Form.new
+        @form = Question.new
         setQuestion(@form)
         @choices = []
         setChoices(@choices)
