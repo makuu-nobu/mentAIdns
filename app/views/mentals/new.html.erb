@@ -1,0 +1,20 @@
+<%= form_with id: "question-form" do |form| %>
+    <div>
+    <p>上部に表示するテキスト</p>
+    </div>
+
+    <div class="options-container">
+    <% @choices.each do |option| %>
+        <label class="option-label">
+        <input type="radio" name="selected_option" value="<%= option %>" class="auto-submit">
+        <div class="option-box">
+            <%= option %>
+        </div>
+        </label>
+    <% end %>
+    </div>
+
+    <div>
+    <%= form.submit "送信", class: 'btn btn-primary' %>
+    </div>
+<% end %>

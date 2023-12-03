@@ -17,7 +17,7 @@ body {
     top: 50%;
     transform: translate(0, -50%);
 }
-.main-content p {
+.main-content-p {
     text-align: center; 
     font-size: 2rem;
     margin: 10%;
