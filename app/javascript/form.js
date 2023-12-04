@@ -14,7 +14,7 @@ const form = () => {
           const formData = new FormData(questionForm);
           
           formData.set('question_text', questionText);
-          formData.set('result_choice', selectedValue.textContent);
+          formData.set('result_choice', selectedValue);
 
           const otherChoices = Array.from(autoSubmitElements)
             .filter(el => el !== selectedOption)
@@ -37,3 +37,4 @@ const form = () => {
 };
 
 window.addEventListener('load', form);
+window.addEventListener('render', form);

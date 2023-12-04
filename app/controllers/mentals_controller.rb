@@ -3,14 +3,19 @@ class MentalsController < ApplicationController
     def index
     end
     def new
-        @form = Question.new
+        @form = Conductor.new
         @form.question_text = SampleQuestion.random_question.text
         @choices = []
         setChoices(@choices)
     end
     def create
-        binding.pry
-        @question = answer.new()
+        @conductor = Conductoer.new(question_params)
+        if @conductor.valid?
+            @conductor.save
+            redirect_to root_path
+        else
+            render :new, status: :unprocessable_entity
+        end
     end
 
     private
@@ -22,5 +27,9 @@ class MentalsController < ApplicationController
     end
     def question_params
         binding.pry
+    end
+
+    def question_params
+        params.permit(:question_text, :result_answer, :choice_2, :choice_3, :choice_4).merge( answer_time: 10)        
     end
 end
