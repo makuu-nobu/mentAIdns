@@ -1,26 +1,24 @@
 class MentalsController < ApplicationController
+    before_action :authenticate_user!
     def index
     end
     def new
         @form = Question.new
-        setQuestion(@form)
+        @form.question_text = SampleQuestion.random_question.text
         @choices = []
         setChoices(@choices)
     end
     def create
+        binding.pry
         @question = answer.new()
     end
 
     private
-    def setQuestion(form)
-        form.question_text = "サンプル問題です。この中にAIで作成した性格診断のテキストが入ります"        
-    end
-
     def setChoices(choices)
-        choices.push("選択肢１")
-        choices.push("選択肢2")
-        choices.push("選択肢3")
-        choices.push("選択肢4")
+        choices.push("当てはまる")
+        choices.push("少し当てはまる")
+        choices.push("あまり当てはまらない")
+        choices.push("当てはまらない")
     end
     def question_params
         binding.pry

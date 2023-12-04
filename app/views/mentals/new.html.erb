@@ -1,6 +1,6 @@
-<%= form_with id: "question-form" do |form| %>
-    <div class="question-text">
-    <%= @form.question_text %>
+<%= form_with url: mentals_path, id: "question-form", local: true do |form| %>
+    <div class="question-text" >
+        <%= @form.question_text %>
     </div>
 
     <div class="options-container">
