@@ -8,7 +8,7 @@ class MentalsController < ApplicationController
         setChoices(@choices)
     end
     def create
-        
+        @question = answer.new()
     end
 
     private
@@ -21,5 +21,8 @@ class MentalsController < ApplicationController
         choices.push("選択肢2")
         choices.push("選択肢3")
         choices.push("選択肢4")
+    end
+    def question_params
+        binding.pry
     end
 end
