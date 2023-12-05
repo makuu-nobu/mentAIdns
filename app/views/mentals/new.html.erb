@@ -1,6 +1,7 @@
-<%= form_with url: mentals_path, id: "question-form", local: true do |form| %>
+<%= form_with model: @conductor, url: mentals_path, id: "question-form", local: true do |form| %>
+    <%= render 'error_messages', model: @conductor %>
     <div class="question-text" >
-        <%= @form.question_text %>
+        <%= @conductor.question_text %>
     </div>
 
     <div class="options-container">

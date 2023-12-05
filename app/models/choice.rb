@@ -9,5 +9,5 @@ class Choice < ApplicationRecord
         validates :answer_time
     end
 
-    belongs_to :answer
+    #belongs_to :answer
 end

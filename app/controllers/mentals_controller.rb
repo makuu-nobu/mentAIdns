@@ -1,35 +1,43 @@
 class MentalsController < ApplicationController
     before_action :authenticate_user!
+
     def index
     end
+
     def new
-        @form = Conductor.new
-        @form.question_text = SampleQuestion.random_question.text
-        @choices = []
-        setChoices(@choices)
+        setQuestion
     end
+
     def create
-        @conductor = Conductoer.new(question_params)
+        @conductor = Conductor.new(question_params)
         if @conductor.valid?
             @conductor.save
+            puts "Conductor saved successfully!"
             redirect_to root_path
         else
-            render :new, status: :unprocessable_entity
+            setQuestion
+            @conductor.question_text = SampleQuestion.random_question.text
+            puts @conductor.errors.full_messages
+            redirect_to root_path, flash: {success: '処理に失敗しました。トップページに戻ります'}
         end
     end
 
     private
+    def setQuestion
+        @conductor = Conductor.new
+        @conductor.question_text = SampleQuestion.random_question.text
+        @choices = []
+        setChoices(@choices)        
+    end
+
     def setChoices(choices)
         choices.push("当てはまる")
         choices.push("少し当てはまる")
         choices.push("あまり当てはまらない")
         choices.push("当てはまらない")
     end
-    def question_params
-        binding.pry
-    end
 
     def question_params
-        params.permit(:question_text, :result_answer, :choice_2, :choice_3, :choice_4).merge( answer_time: 10)        
+        params.permit(:question_text,:result_answer, :choice_2, :choice_3, :choice_4).merge(answer_time: 10, user_id: current_user.id)
     end
 end
