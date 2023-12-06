@@ -16,6 +16,7 @@ const form = () => {
   const questionText = (questionDiv.textContent || questionDiv.innerText).trim(); // trim() を追加
   var answerTime;
   const startBtn = document.getElementById("start-btn");
+  const optionsContainer = document.querySelector(".options-container");
 
   startBtn.addEventListener("click", () => {
     answerTime = new Date().getTime();
@@ -54,6 +55,10 @@ const form = () => {
             ${question}
           </div>`;
           questionDiv.innerHTML = question;
+
+          // Start ボタンを再表示し、Options Container を非表示にする
+          startBtn.style.display = "block";
+          optionsContainer.style.display = "none";
         };
       }
     });
