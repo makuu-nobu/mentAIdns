@@ -1,0 +1,5 @@
+<p>ここは詳細表示画面です</p>
+<p><%= @user.username %></p>
+<% @answers.each do |answer| %>
+    <p><%= answer.question.question_text %> : <%= answer.choice.result_answer %></p>
+<% end %>

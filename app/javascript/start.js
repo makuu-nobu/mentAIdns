@@ -9,4 +9,4 @@ const start = () => {
     });
 };
 
-window.addEventListener("load", start);
+window.addEventListener("turbo:load", start);

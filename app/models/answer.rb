@@ -7,6 +7,6 @@ class Answer < ApplicationRecord
     end
 
     belongs_to :user
-    has_many :questions
-    has_many :choices
+    belongs_to :question
+    belongs_to :choice
 end
