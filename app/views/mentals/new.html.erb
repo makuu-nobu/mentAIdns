@@ -4,15 +4,20 @@
         <%= @conductor.question_text %>
     </div>
 
-    <div class="options-container">
-    <% @choices.each do |option| %>
-        <label class="option-label">
-            <input type="radio" name="selected_option" value="<%= option %>" class="auto-submit">
-        <div class="option-box">
-            <%= option %>
+    <div class="option-field">
+        <div class="options-container">
+            <% @choices.each do |option| %>
+                <label class="option-label">
+                    <input type="radio" name="selected_option" value="<%= option %>" class="auto-submit">
+                <div class="option-box">
+                    <%= option %>
+                </div>
+                </label>
+            <% end %>
         </div>
-        </label>
-    <% end %>
+    </div>
+    <div class="btn-field">
+        <button id="start-btn">質問に答える</button>
     </div>
 
     <div>

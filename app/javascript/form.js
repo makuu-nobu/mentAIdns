@@ -29,7 +29,6 @@ const form = () => {
         XHR.send(formData)
         XHR.onload = () => {
           console.log(XHR.response);
-          alert('保存が成功しました！');
         };
       }
     });

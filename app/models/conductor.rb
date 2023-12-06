@@ -20,7 +20,6 @@ class Conductor
         choice = Choice.create(question_id: question.id, result_answer: result_answer, choice_2: choice_2, choice_3: choice_3, choice_4: choice_4, answer_time: answer_time)
         puts "Choice #{choice.id}"
         Answer.create(user_id: user_id, question_id: question.id, choice_id: choice.id)
-        binding.pry
         puts "Answer save"
     end
 end
