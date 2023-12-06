@@ -17,6 +17,7 @@ const form = () => {
   var answerTime;
   const startBtn = document.getElementById("start-btn");
   const optionsContainer = document.querySelector(".options-container");
+  var count = 0;
 
   startBtn.addEventListener("click", () => {
     answerTime = new Date().getTime();
@@ -55,6 +56,14 @@ const form = () => {
             ${question}
           </div>`;
           questionDiv.innerHTML = question;
+
+          count++;
+
+          if (count === 5) {
+            window.alert("診断結果を表示します");
+            const mentalPath = `/mentals/${currentUserId}`;
+            window.location.href = `/mentals/${currentUserId}`
+          };
 
           // Start ボタンを再表示し、Options Container を非表示にする
           startBtn.style.display = "block";

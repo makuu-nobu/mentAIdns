@@ -43,6 +43,13 @@
       </ul>
     </div>
   </nav>
+  
+  <% if user_signed_in?%>
+    <div class="hello">
+      こんにちは。 <%= current_user.username%>さん
+    </div>
+  <% end %>
+
   <div class="container-fluid mt-4 custom-main-size">
     <div class="row justify-content-center custom-border">
       <div class="col-lg-6 main-content"> 
