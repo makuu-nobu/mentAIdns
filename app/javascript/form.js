@@ -1,3 +1,14 @@
+const start = () => {
+  const startBtn = document.getElementById("start-btn");
+  const optionsContainer = document.querySelector(".options-container");
+
+  startBtn.addEventListener("click", (e) =>{
+      e.preventDefault();
+      startBtn.style.display = "none";
+      optionsContainer.style.display = "block";
+  });
+};
+
 const form = () => {
   const autoSubmitElements = document.querySelectorAll('.auto-submit');
   const questionForm = document.getElementById('question-form');
@@ -17,7 +28,7 @@ const form = () => {
 
       if (selectedOption){
         const selectedValue = selectedOption.value;
-        answerTime = new Date().getTime() - answerTime;
+        answerTime = Math.floor((new Date().getTime() - answerTime) / 1000);
         const formData = new FormData(questionForm);
         formData.set('answer_time', answerTime);
         
@@ -37,6 +48,12 @@ const form = () => {
         XHR.send(formData)
         XHR.onload = () => {
           console.log(XHR.response);
+          const question = XHR.response.question;
+          const html = `
+          <div class="question-text" >
+            ${question}
+          </div>`;
+          questionDiv.innerHTML = question;
         };
       }
     });
@@ -44,3 +61,4 @@ const form = () => {
 };
 
 window.addEventListener('turbo:load', form);
+window.addEventListener("turbo:load", start);

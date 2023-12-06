@@ -12,11 +12,11 @@ class MentalsController < ApplicationController
         @conductor = Conductor.new(question_params)
         if @conductor.valid?
             @conductor.save
+            @question = SampleQuestion.random_question.text
+            render json:{ question: @question}
             puts "Conductor saved successfully!"
-            redirect_to root_path
         else
             setQuestion
-            @conductor.question_text = SampleQuestion.random_question.text
             puts @conductor.errors.full_messages
             redirect_to root_path, flash: {success: '処理に失敗しました。トップページに戻ります'}
         end

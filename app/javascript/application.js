@@ -5,4 +5,3 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "form"
-import "start"
