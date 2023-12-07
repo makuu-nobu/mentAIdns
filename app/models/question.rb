@@ -2,5 +2,5 @@ class Question < ApplicationRecord
 
     validates :question_text, presence: true
 
-    belongs_to :answer
+    has_one :answer
 end

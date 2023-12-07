@@ -20,23 +20,39 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">ホームへ戻る</a>
+          <%= link_to 'ホームへ戻る', root_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">今までの記録</a>
+          <%= link_to 'みんなの記録', result_mentals_path, class: "nav-link" %>
+        </li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to '診断を始める', new_mental_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">診断を始める</a>
+          <%= link_to '今までの記録', user_path(current_user.id), class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">サインイン</a>
+          <%= link_to 'サインアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to 'サインイン', new_user_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">サインアウト</a>
+          <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
         </li>
+        <% end %>
       </ul>
     </div>
   </nav>
+  
+  <% if user_signed_in?%>
+    <div class="hello">
+      こんにちは。 <%= current_user.username%>さん
+    </div>
+  <% end %>
+
   <div class="container-fluid mt-4 custom-main-size">
     <div class="row justify-content-center custom-border">
       <div class="col-lg-6 main-content"> 

@@ -1,20 +1,29 @@
-<%= form_with id: "question-form" do |form| %>
-    <div class="question-text">
-    <%= @form.question_text %>
+<%= form_with model: @conductor, url: mentals_path, id: "question-form", local: true do |form| %>
+    <%= render 'error_messages', model: @conductor %>
+    <div class="question-text" >
+        <%= @conductor.question_text %>
     </div>
 
-    <div class="options-container">
-    <% @choices.each do |option| %>
-        <label class="option-label">
-            <input type="radio" name="selected_option" value="<%= option %>" class="auto-submit">
-        <div class="option-box">
-            <%= option %>
+    <div class="option-field">
+        <div class="options-container">
+            <% @choices.each do |option| %>
+                <label class="option-label">
+                    <input type="radio" name="selected_option" value="<%= option %>" class="auto-submit">
+                <div class="option-box">
+                    <%= option %>
+                </div>
+                </label>
+            <% end %>
         </div>
-        </label>
-    <% end %>
+    </div>
+    <div class="btn-field">
+        <button id="start-btn">質問に答える</button>
     </div>
 
     <div>
     <%= form.submit "送信", class: 'btn btn-primary custom-btn' %>
     </div>
 <% end %>
+<script>
+    const currentUserId = <%= current_user.id %>;
+</script>

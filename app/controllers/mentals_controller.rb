@@ -1,28 +1,50 @@
 class MentalsController < ApplicationController
+    before_action :authenticate_user!, except: [:index, :show, :result]
+
     def index
     end
+
     def new
-        @form = Question.new
-        setQuestion(@form)
-        @choices = []
-        setChoices(@choices)
+        setQuestion
     end
+
     def create
-        @question = answer.new()
+        @conductor = Conductor.new(question_params)
+        if @conductor.valid?
+            @conductor.save
+            @question = SampleQuestion.random_question.text
+            render json:{ question: @question}
+            puts "Conductor saved successfully!"
+        else
+            setQuestion
+            puts @conductor.errors.full_messages
+            redirect_to root_path, flash: {success: '処理に失敗しました。トップページに戻ります'}
+        end
+    end
+
+    def show
+    end
+
+    def result
+        @users = User.where(release_option: 0)
     end
 
     private
-    def setQuestion(form)
-        form.question_text = "サンプル問題です。この中にAIで作成した性格診断のテキストが入ります"        
+    def setQuestion
+        @conductor = Conductor.new
+        @conductor.question_text = SampleQuestion.random_question.text
+        @choices = []
+        setChoices(@choices)        
     end
 
     def setChoices(choices)
-        choices.push("選択肢１")
-        choices.push("選択肢2")
-        choices.push("選択肢3")
-        choices.push("選択肢4")
+        choices.push("当てはまる")
+        choices.push("少し当てはまる")
+        choices.push("あまり当てはまらない")
+        choices.push("当てはまらない")
     end
+
     def question_params
-        binding.pry
+        params.permit(:question_text,:result_answer, :choice_2, :choice_3, :choice_4, :answer_time).merge(user_id: current_user.id)
     end
 end

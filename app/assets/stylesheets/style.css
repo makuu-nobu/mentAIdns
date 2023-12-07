@@ -44,10 +44,13 @@ body {
 
 .question-text{
     font-size: 2rem;
+    padding: 20px;
 }
 
 .options-container{
     border-top: 2px solid black;
+    display: none;
+    padding-top: 10px;
 }
 .auto-submit{
     display: inline;
@@ -59,6 +62,24 @@ body {
     margin: 3px;
     padding: 5px;
 }
+
+.option-field{
+    position: relative;
+}
+
+#start-btn{
+    position: absolute;
+    justify-content: center;
+    bottom: 0;
+    width: 80%;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+}
+
 
 .custom-btn{
     visibility: hidden;
