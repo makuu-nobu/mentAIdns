@@ -9,4 +9,8 @@ class Answer < ApplicationRecord
     belongs_to :user
     belongs_to :question
     belongs_to :choice
+
+    def self.limitQuestions
+        Answer.order(update_at: :desc).limit(5)   
+    end
 end

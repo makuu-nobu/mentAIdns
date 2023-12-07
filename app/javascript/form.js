@@ -12,8 +12,6 @@ const start = () => {
 const form = () => {
   const autoSubmitElements = document.querySelectorAll('.auto-submit');
   const questionForm = document.getElementById('question-form');
-  const questionDiv = document.querySelector('.question-text');
-  const questionText = (questionDiv.textContent || questionDiv.innerText).trim(); // trim() を追加
   var answerTime;
   const startBtn = document.getElementById("start-btn");
   const optionsContainer = document.querySelector(".options-container");
@@ -26,6 +24,8 @@ const form = () => {
   autoSubmitElements.forEach(function (element) {
     element.addEventListener('change', function (e) {
       e.preventDefault();
+      const questionDiv = document.querySelector('.question-text');
+      const questionText = (questionDiv.textContent || questionDiv.innerText).trim(); // trim() を追加
       const selectedOption = document.querySelector('input[name="selected_option"]:checked');
 
       if (selectedOption){

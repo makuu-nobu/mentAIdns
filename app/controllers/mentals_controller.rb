@@ -24,7 +24,7 @@ class MentalsController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @answers = @user.answers
+        @answers = @user.answers.order("question_id DESC").limit(5)
     end
 
     private
