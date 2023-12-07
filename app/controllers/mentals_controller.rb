@@ -1,5 +1,5 @@
 class MentalsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :result]
 
     def index
     end
@@ -23,8 +23,10 @@ class MentalsController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
-        @answers = @user.answers.order("question_id DESC").limit(5)
+    end
+
+    def result
+        @users = User.where(release_option: 0)
     end
 
     private

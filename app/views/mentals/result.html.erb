@@ -1,0 +1,6 @@
+ここはリザルト画面です。これまでの診断結果が表示されます。
+<% @users.each do |user| %>
+    <div>
+        <%= link_to "#{user.username}: #{user.created_at}", mental_path(user), class: "user_show_path" %>
+    </div>
+<% end %>
