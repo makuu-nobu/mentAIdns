@@ -23,6 +23,13 @@ class MentalsController < ApplicationController
     end
 
     def show
+        api_key = ENV["OPEN_API_KEY"]
+        user_id = params[:id]
+        question = Editor.editText(user_id)
+        #question = 'テストメッセージです。レスポンスには「通信完了しました」と記述してください'
+
+        response = Openai.chat_gpt(api_key, question)
+        @text_data = response['choices'][0]['text']
     end
 
     def result
