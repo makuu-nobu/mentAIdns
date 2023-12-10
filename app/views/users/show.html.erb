@@ -1,39 +1,40 @@
-<div class="container">
+<div class="container mt-4">
     <h2><%= @user.username %>さんの、今までの記録</h2>
 
-    <%= form_with model: @user, url: user_path(@user.id), local: true do |form| %>
-        <div class="mb-3">
-        <%= form.label :release_option, "公開設定", class: "form-label" %>
-        <div class="form-check">
+    <%= form_with model: @user, url: user_path(@user.id), local: true, html: { class: "form-inline" } do |form| %>
+        <div class="form-group mb-2">
+        <%= form.label :release_option, "公開設定", class: "mr-2" %>
+        <div class="form-check form-check-inline">
             <%= form.radio_button :release_option, 0, class: "form-check-input", checked: @user.release_option == 0 %>
             <%= form.label :release_option, '公開', class: "form-check-label" %>
         </div>
-        <div class="form-check">
+        <div class="form-check form-check-inline">
             <%= form.radio_button :release_option, 1, class: "form-check-input", checked: @user.release_option == 1 %>
             <%= form.label :release_option, '非公開', class: "form-check-label" %>
         </div>
         </div>
-        
-        <div class="mb-3">
+
+        <div class="form-group mb-2">
         <%= form.submit '更新', class: "btn btn-primary" %>
         </div>
     <% end %>
 
     <% if @user.answers.present? %>
-    <div>
-        <p>直近の問題</p>
+        <div class="mt-4">
+        <h4>直近の問題</h4>
         <% @answers.each do |answer| %>
             <p><%= answer.question.question_text %> : <%= answer.choice.result_answer %></p>
         <% end %>
-    </div>
+        </div>
     <% end %>
 
     <% if @user.result.present? %>
-        <p>回答結果を見る</p>
-        <%#= ここに部分テンプレートで回答結果 %>
+        <div class="mt-4">
+        <h4>回答結果を見る</h4>
         <%= render partial: "result", locals: { user: @user } %>
+        <%= link_to '削除', user_path(@user.id), data: { turbo_method: :delete }, class: "btn btn-sm btn-danger mt-2" %>
+        </div>
     <% else %>
-        <p>--- まだ診断結果はありません ---</p>
+        <p class="mt-4">--- まだ診断結果はありません ---</p>
     <% end %>
-    
 </div>
