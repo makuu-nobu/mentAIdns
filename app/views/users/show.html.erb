@@ -1,5 +1,5 @@
 <div class="container">
-    <h1><%= @user.username %>さんの、今までの記録</h1>
+    <h2><%= @user.username %>さんの、今までの記録</h2>
 
     <%= form_with model: @user, url: user_path(@user.id), local: true do |form| %>
         <div class="mb-3">

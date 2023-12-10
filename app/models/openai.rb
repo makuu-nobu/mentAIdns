@@ -5,18 +5,25 @@ require 'json'
 class Openai
     include ActiveModel::Model
 
-    def self.chat_gpt(api_key, question)
+    def self.chat_gpt(api_key, results)
         # APIのエンドポイントを指定
-        uri = URI.parse('https://api.openai.com/v1/completions')  # エンドポイントを変更
+        uri = URI.parse('https://api.openai.com/v1/chat/completions')  # エンドポイントを変更
 
         # POSTリクエストを作成
         request = Net::HTTP::Post.new(uri)
         request.content_type = 'application/json'
         request['Authorization'] = "Bearer #{api_key}"
         request.body = JSON.dump({
-        'model' => 'text-davinci-003',
-        'prompt' => question,
-        'max_tokens' => 150  # 必要に応じて調整
+        'model' => 'gpt-3.5-turbo',
+        'messages' => [
+            {"role": "user", "content": "これから５つの性格診断の問題と回答、回答傾向を入力します。５つすべて記入されてから返答を返してください"},
+            {"role": "user", "content": "#{results[0]}"},
+            {"role": "user", "content": "#{results[1]}"},
+            {"role": "user", "content": "#{results[2]}"},
+            {"role": "user", "content": "#{results[3]}"},
+            {"role": "user", "content": "#{results[4]}"},
+            {"role": "assistant", "content": "これらの結果を踏まえた性格診断を行ない、総評を教えてください"}
+        ]
         })
 
         # リクエストを送信し、レスポンスを受け取る

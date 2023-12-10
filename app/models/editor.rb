@@ -3,7 +3,7 @@ class Editor
     
     def self.editText(user_id)
         recent_answers = Answer.where(user_id: user_id).last(5)
-        result = ""
+        results = []
         
         recent_answers.each_with_index do |answer, index|
             question = Question.find_by(id: answer.question_id)
@@ -29,10 +29,10 @@ class Editor
             puts "Intuitive Answer: #{intuitive_answer}"
             puts "Thoughtful Answer: #{thoughtful_answer}"
             puts '---'
-            result += "問#{index + 1}=>質問文:#{question&.question_text}、回答:#{choice&.result_answer}、回答の傾向:#{intuitive_answer + thoughtful_answer}"
+            results.push("問#{index + 1}=>質問文:#{question&.question_text}、回答:#{choice&.result_answer}、回答の傾向:#{intuitive_answer + thoughtful_answer}")
         end
-        result += "以上の回答に対して性格診断を行い性格分析の結果を50文字以内で簡潔に教えてください。"
-        return result
+
+        return results
     end
 
 end
