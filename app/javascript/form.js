@@ -17,6 +17,16 @@ const form = () => {
   const optionsContainer = document.querySelector(".options-container");
   var count = 0;
 
+  const showLoadingGif = () => {
+    const loadingContainer = document.getElementById("loading-container");
+    loadingContainer.style.display = "block";
+  };
+  
+  const hideLoadingGif = () => {
+    const loadingContainer = document.getElementById("loading-container");
+    loadingContainer.style.display = "none";
+  };
+
   startBtn.addEventListener("click", () => {
     answerTime = new Date().getTime();
   });
@@ -62,6 +72,9 @@ const form = () => {
           if (count === 5) {
             window.alert("診断結果を表示します");
             const mentalPath = `/mentals/${currentUserId}`;
+
+            showLoadingGif();
+
             window.location.href = `/mentals/${currentUserId}`
           };
 

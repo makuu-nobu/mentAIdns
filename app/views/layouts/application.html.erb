@@ -13,7 +13,7 @@
   <body class="bg-light">
     <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="#">Your Logo</a>
+    <%= link_to image_tag('bear.png', alt: "brand-logo", class: "navbar-brand" ), root_path %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,17 +47,22 @@
     </div>
   </nav>
   
+  <div id="loading-container" style="display: none;">
+    <div class="loading-message mt-4">現在読み込み中です。しばらくお待ちください</div>
+    <div id="splash-logo"><%= image_tag'greeting.png', alt: "loading", width: '50%', height: '50%' %></div>
+  </div>
+  <div class="container-fluid mt-4 custom-main-size">
+
   <% if user_signed_in?%>
     <div class="hello">
       こんにちは。 <%= current_user.username%>さん
     </div>
   <% end %>
-
-  <div class="container-fluid mt-4 custom-main-size">
+  
     <div class="row justify-content-center custom-border">
-      <div class="col-lg-6 main-content"> 
+      
         <%= yield %>
-      </div>
+      
     </div>
   </div>
 
