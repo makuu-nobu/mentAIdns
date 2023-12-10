@@ -19,7 +19,10 @@
         </div>
     <% end %>
 
+    <p>直近の問題</p>
     <% @answers.each do |answer| %>
         <p><%= answer.question.question_text %> : <%= answer.choice.result_answer %></p>
     <% end %>
+    <p>回答結果を見る</p>
+    
 </div>

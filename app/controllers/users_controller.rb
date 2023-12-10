@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     before_action :move_to_index, only: [:show, :update]
 
     def show
+        #ここが詳細ページ、公開設定と回答の保存ができるようにする
         @user = User.find(params[:id])
         unless @user.id == current_user.id
             redirect_to root_path

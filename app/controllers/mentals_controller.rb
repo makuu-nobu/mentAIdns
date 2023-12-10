@@ -34,7 +34,13 @@ class MentalsController < ApplicationController
     end
 
     def result
-        @users = User.where(release_option: 0)
+        @results = Result.includes(:user).order("created_at DESC")
+    end
+
+    def user
+        #これが履歴表示、これまでの記録で飛ぶページ
+        user_id = params[:id]
+        @results = Result.where(user_id: user_id)
     end
 
     private

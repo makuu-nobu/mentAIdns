@@ -30,7 +30,7 @@
           <%= link_to '診断を始める', new_mental_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to '今までの記録', user_path(current_user.id), class: "nav-link"%>
+          <%= link_to '今までの記録', user_mental_path(current_user.id), class: "nav-link"%>
         </li>
         <li class="nav-item">
           <%= link_to 'サインアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
