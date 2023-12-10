@@ -23,7 +23,7 @@ class MentalsController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        @user = User.find(current_user.id)
         if @user.result.blank?
 
             api_key = ENV["OPEN_API_KEY"]
@@ -46,8 +46,11 @@ class MentalsController < ApplicationController
     def user
         #これが履歴表示、これまでの記録で飛ぶページ
         #user_idに仕掛けをしてuser_idを現在のユーザーidに書き換える
-        user_id = current_user.id
-        @results = Result.where(user_id: user_id)
+        @user = User.find(params[:id])
+        unless @user.release_option == 0
+            redirect_to root_path            
+        end
+        @result = @user.result.result_text
     end
 
     private

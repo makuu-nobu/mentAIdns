@@ -5,7 +5,8 @@
         <div class="mb-3">
         <% if result.user.release_option == 0 %>
             <span class="badge bg-primary"><%= index + 1 %></span>
-            <%= link_to "#{result.user.username}: #{result.user.created_at.strftime('%Y-%m-%d')}", user_path(result.user), class: "user_show_path" %>
+            <%= link_to "#{result.user.username}: #{result.user.created_at.strftime('%Y-%m-%d')}", user_mental_path(result.user.id), class: "user_show_path" %>
+            <%= link_to "詳細へ進む", user_mental_path(result.user.id), class: "btn btn-sm btn-primary ml-2" %>
         <%end%>
         </div>
     <% end %>
