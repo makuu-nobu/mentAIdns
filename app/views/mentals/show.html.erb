@@ -2,5 +2,6 @@
     <div class="card-body">
         <h4 class="card-title">診断結果</h4>
         <p class="card-text"><%= @result %></p>
+        <%= link_to 'ユーザー詳細画面に進む', user_path(current_user.id), class: "card-text btn"%>
     </div>
 </div>

@@ -23,17 +23,34 @@ class MentalsController < ApplicationController
     end
 
     def show
-        api_key = ENV["OPEN_API_KEY"]
-        user_id = params[:id]
-        results = Editor.editText(user_id)
-        #question = 'テストメッセージです。レスポンスには「通信完了しました」と記述してください'
+        @user = User.find(current_user.id)
+        if @user.result.blank?
 
-        response = Openai.chat_gpt(api_key, results)
-        @result = response['choices'][0]['message']['content']
+            api_key = ENV["OPEN_API_KEY"]
+            user_id = @user.id
+            results = Editor.editText(user_id)
+            #question = 'テストメッセージです。レスポンスには「通信完了しました」と記述してください'
+
+            response = Openai.chat_gpt(api_key, results)
+            @result = response['choices'][0]['message']['content']
+            result_save(@result)
+        else
+            @result = "以前の結果を表示します : " + @user.result.result_text
+        end
     end
 
     def result
-        @users = User.where(release_option: 0)
+        @results = Result.includes(:user).order("created_at DESC")
+    end
+
+    def user
+        #これが履歴表示、これまでの記録で飛ぶページ
+        #user_idに仕掛けをしてuser_idを現在のユーザーidに書き換える
+        @user = User.find(params[:id])
+        unless @user.release_option == 0
+            redirect_to root_path            
+        end
+        @result = @user.result.result_text
     end
 
     private
@@ -53,5 +70,14 @@ class MentalsController < ApplicationController
 
     def question_params
         params.permit(:question_text,:result_answer, :choice_2, :choice_3, :choice_4, :answer_time).merge(user_id: current_user.id)
+    end
+
+    def result_save(result)
+        @text = Result.new(result_text: result, user_id: current_user.id)
+        if @text.valid?
+            @text.save
+        else
+            puts "保存に失敗しました"
+        end
     end
 end

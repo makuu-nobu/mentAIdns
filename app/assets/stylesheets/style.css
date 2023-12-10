@@ -115,3 +115,13 @@ body {
 #splash_logo img {
     width:260px;
 }
+
+.user-index {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.custom-user-h {
+    margin: 5px auto;
+}
