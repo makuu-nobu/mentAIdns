@@ -9,5 +9,8 @@ Rails.application.routes.draw do
       get 'user'
     end
   end
+  namespace :admin do
+    resources :developers, only: [:index, :new, :create, :show,  :edit, :destroy]
+  end
   resources :users, only: [:show ,:update, :destroy]
 end
