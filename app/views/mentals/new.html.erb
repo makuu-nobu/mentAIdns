@@ -1,3 +1,4 @@
+<div class="col-lg-6 main-content"> 
 <%= form_with model: @conductor, url: mentals_path, id: "question-form", local: true do |form| %>
     <%= render 'error_messages', model: @conductor %>
     <div class="question-text" >
@@ -24,6 +25,7 @@
     <%= form.submit "送信", class: 'btn btn-primary custom-btn' %>
     </div>
 <% end %>
+</div>
 <script>
     const currentUserId = <%= current_user.id %>;
 </script>
