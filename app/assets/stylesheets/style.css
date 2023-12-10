@@ -21,20 +21,21 @@ body {
 .custom-border{
     width: 90vw;
     height: 80vh;
-    margin: 20px auto;
+    margin: 10px auto;
     border: 2px solid black;
     position: relative;
+    overflow: scroll;
 }
 .main-content {
-    padding: 20px;
-    margin: 30px;
+    padding: 5px;
+    margin: 5px;
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
 }
 .main-content-p {
     text-align: center; 
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 10%;
 }
 .custom-main-size {
