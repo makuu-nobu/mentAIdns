@@ -30,6 +30,7 @@ class MentalsController < ApplicationController
 
         response = Openai.chat_gpt(api_key, results)
         @result = response['choices'][0]['message']['content']
+        result_save(@result)
     end
 
     def result
@@ -53,5 +54,14 @@ class MentalsController < ApplicationController
 
     def question_params
         params.permit(:question_text,:result_answer, :choice_2, :choice_3, :choice_4, :answer_time).merge(user_id: current_user.id)
+    end
+
+    def result_save(result)
+        @text = Result.new(result_text: result, user_id: current_user.id)
+        if @text.valid?
+            @text.save
+        else
+            puts "保存に失敗しました"
+        end
     end
 end
