@@ -2,7 +2,7 @@
 <% @results.each_with_index do |result, index| %>
     <div class="mb-2 custom-user-h">
         <span class="badge bg-primary"><%= index + 1 %></span>
-        <%= link_to "#{result.user.created_at.strftime('%Y-%m-%d')} : #{result.result_text[0, 20]}...", mental_path(result.user), class: "user_show_path" %>
+        <%= link_to "#{result.user.created_at.strftime('%Y-%m-%d')} : #{result.result_text[0, 20]}...", user_path(result.user), class: "user_show_path" %>
         <%= link_to "詳細へ進む", mental_path(result.user), class: "btn btn-sm btn-primary ml-2" %>
     </div>
 <% end %>

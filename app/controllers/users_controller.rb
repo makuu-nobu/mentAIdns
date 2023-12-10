@@ -8,6 +8,11 @@ class UsersController < ApplicationController
             redirect_to root_path
         end
         @answers = @user.answers.order("question_id DESC").limit(5)
+        if @user.result.present?
+            @result = Result.where(user_id: @user.id)
+        else
+            @result = "まだ診断結果がありません"
+        end
     end
 
     def update

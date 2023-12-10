@@ -23,14 +23,20 @@ class MentalsController < ApplicationController
     end
 
     def show
-        api_key = ENV["OPEN_API_KEY"]
-        user_id = params[:id]
-        results = Editor.editText(user_id)
-        #question = 'テストメッセージです。レスポンスには「通信完了しました」と記述してください'
+        @user = User.find(params[:id])
+        if @user.result.blank?
 
-        response = Openai.chat_gpt(api_key, results)
-        @result = response['choices'][0]['message']['content']
-        result_save(@result)
+            api_key = ENV["OPEN_API_KEY"]
+            user_id = @user.id
+            results = Editor.editText(user_id)
+            #question = 'テストメッセージです。レスポンスには「通信完了しました」と記述してください'
+
+            response = Openai.chat_gpt(api_key, results)
+            @result = response['choices'][0]['message']['content']
+            result_save(@result)
+        else
+            @result = "以前の結果を表示します : " + @user.result.result_text
+        end
     end
 
     def result
@@ -39,7 +45,8 @@ class MentalsController < ApplicationController
 
     def user
         #これが履歴表示、これまでの記録で飛ぶページ
-        user_id = params[:id]
+        #user_idに仕掛けをしてuser_idを現在のユーザーidに書き換える
+        user_id = current_user.id
         @results = Result.where(user_id: user_id)
     end
 
