@@ -19,16 +19,21 @@
         </div>
     <% end %>
 
+    <% if @user.answers.present? %>
     <div>
         <p>直近の問題</p>
         <% @answers.each do |answer| %>
             <p><%= answer.question.question_text %> : <%= answer.choice.result_answer %></p>
         <% end %>
     </div>
-    <div>
+    <% end %>
+
+    <% if @user.result.present? %>
         <p>回答結果を見る</p>
         <%#= ここに部分テンプレートで回答結果 %>
-        <%= render partial: "result", locals: { result: @result } %>
-    </div>
+        <%= render partial: "result", locals: { user: @user } %>
+    <% else %>
+        <p>--- まだ診断結果はありません ---</p>
+    <% end %>
     
 </div>

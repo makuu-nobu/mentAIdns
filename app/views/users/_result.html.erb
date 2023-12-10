@@ -1,3 +1,4 @@
 <div>
-    <%= result[0].result_text %>
+    <%= user.result.result_text %>
+    <%= link_to '削除', user_path(user.id), data: { turbo_method: :delete } %>
 </div>

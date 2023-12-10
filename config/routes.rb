@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       get 'user'
     end
   end
-  resources :users, only: [:show ,:update]
+  resources :users, only: [:show ,:update, :destroy]
 end
