@@ -5,12 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create!(username:  "管理者",
-    email: "admin@gmail.com",
-    password:  "admin1111",
-    password_confirmation: "admin1111",
-    admin: true)
-
 questions_sample = [
     "他人との関係において、自分の感情や考えをオープンに表現することができますか？",
     "新しい環境や経験に対して興奮することがありますか？",
@@ -26,5 +20,5 @@ questions_sample = [
     "計画的に物事を進めることが得意ですか？"
 ]
 questions_sample.each do |sample|
-    SampleQuestion.create!(text: sample)
+    Question.create!(question_text: sample)
 end
