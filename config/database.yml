@@ -53,3 +53,5 @@ production:
   database: mentAIdns_production
   username: mentAIdns
   password: <%= ENV["MENTAIDNS_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
