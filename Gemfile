@@ -77,3 +77,7 @@ gem 'faker'
 gem 'bootstrap', '~> 5.0.2'
 gem 'faker'
 gem 'jquery-rails'
+
+group :production do
+  gem 'pg'
+end
