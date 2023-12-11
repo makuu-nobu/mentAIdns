@@ -10,7 +10,9 @@ OpenAIを使用した性格診断アプリ
 * Ruby 3.2.0
 
 # デプロイ
-現在まだデプロイが完了していません。完了次第更新します。
+* 現在Renderにデプロイしています。今後AWSか他サービスに移設する予定です。
+* アプリケーションのURL
+* https://mentaidns-40021.onrender.com
 
 # どんなアプリ？
 Ruby on RailsでOpenAIを利用した性格診断アプリです。
