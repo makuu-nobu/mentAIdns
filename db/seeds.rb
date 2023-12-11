@@ -20,5 +20,5 @@ questions_sample = [
     "計画的に物事を進めることが得意ですか？"
 ]
 questions_sample.each do |sample|
-    Question.create!(question_text: sample)
+    SampleQuestion.create!(text: sample)
 end
