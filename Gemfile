@@ -77,6 +77,3 @@ gem 'faker'
 gem 'bootstrap', '~> 5.0.2'
 gem 'faker'
 gem 'jquery-rails'
-gem 'rails_admin', '~> 3.0'
-gem 'cancancan'
-gem "cssbundling-rails"
