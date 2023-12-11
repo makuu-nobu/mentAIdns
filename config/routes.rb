@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'mentals#index'
   resources :mentals, only: [:index, :new, :create, :show] do
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get 'user'
     end
+  end
+  namespace :admin do
+    resources :developers, only: [:index, :new, :create, :show,  :edit, :destroy]
   end
   resources :users, only: [:show ,:update, :destroy]
 end
