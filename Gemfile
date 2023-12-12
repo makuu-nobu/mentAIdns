@@ -75,9 +75,9 @@ gem 'pry-rails'
 gem 'devise'
 gem 'faker'
 gem 'bootstrap', '~> 5.0.2'
-gem 'faker'
 gem 'jquery-rails'
 
 group :production do
   gem 'pg'
+  gem 'unicorn', '6.1.0'
 end
