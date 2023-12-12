@@ -78,6 +78,5 @@ gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
 
 group :production do
-  gem 'pg'
   gem 'unicorn', '6.1.0'
 end
