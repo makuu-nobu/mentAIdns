@@ -76,7 +76,7 @@ gem 'devise'
 gem 'faker'
 gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
-
+gem 'mini_racer'
 group :production do
   gem 'unicorn', '6.1.0'
 end
