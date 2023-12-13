@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     def destroy
         @result = Result.find(@user.result.id)
         @result.destroy
-        redirect_to :show
+        redirect_to user_path(@user.id)
     end
     
     private
