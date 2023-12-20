@@ -38,7 +38,7 @@ const form = () => {
       e.preventDefault();
       const questionDiv = document.querySelector('.question-text');
       const questionText = (questionDiv.textContent || questionDiv.innerText).trim();
-      const selectedOption = document.querySelector('input[name="selected_option"]:checked');
+      const selectedOption = document.querySelector('input[name="selected_options[]"]:checked');
 
       if (selectedOption) {
         const selectedValue = selectedOption.value;
@@ -69,6 +69,11 @@ const form = () => {
             const question = XHR.response.question;
             const html = `<div class="question-text">${question}</div>`;
             questionDiv.innerHTML = question;
+
+             // チェックボックスのチェックを外す
+            autoSubmitElements.forEach((checkbox) => {
+              checkbox.checked = false;
+            });
 
             count++;
 
