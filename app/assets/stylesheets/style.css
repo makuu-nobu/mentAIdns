@@ -1,16 +1,37 @@
-input[type="radio"] {
+
+ラジオボタンのスタイルをリセットし、チェックボックスに変更したい場合は、次のようにスタイルを調整できます。以下は変更されたスタイルです。
+
+css
+Copy code
+/* ラジオボタンのスタイルをリセット */
+input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    /* 背景に画像やスタイルを指定してカスタマイズすることが可能 */
-    /* background-image: url('path/to/custom-image.png'); */
-    /* background-size: 16px; */
+    display: none;
 }
 
 /* 選択された時のスタイル（例：青い背景色） */
-input[type="radio"]:checked {
-background-color: blue;
+input[type="checkbox"]:checked {
+    background-color: blue;
 }
+
+
+/* 選択肢がホバーされた時のスタイル（薄い青） */
+.options-container label:hover .option-box {
+    background-color: lightblue;
+}
+
+/* チェックボックスがチェックされた時のスタイル（青い背景色） */
+input[type="checkbox"]:checked + .option-box {
+    background-color: blue;
+}
+
+/* チェックボックスが非チェックの時のスタイル（元の色に戻す） */
+.options-container label:not(:hover) .option-box {
+    background-color: initial;
+}
+
 
 
 body {
@@ -59,7 +80,7 @@ body {
     padding-top: 10px;
 }
 .auto-submit{
-    display: inline;
+    display: none;
 }
 .options-container label{ 
     display: block;
