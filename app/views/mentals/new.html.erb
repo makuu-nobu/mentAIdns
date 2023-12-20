@@ -9,10 +9,10 @@
         <div class="options-container">
             <% @choices.each do |option| %>
                 <label class="option-label">
-                    <input type="radio" name="selected_option" value="<%= option %>" class="auto-submit">
-                <div class="option-box">
-                    <%= option %>
-                </div>
+                    <input type="checkbox" name="selected_options[]" value="<%= option %>" class="auto-submit">
+                        <div class="option-box">
+                        <%= option %>
+                        </div>
                 </label>
             <% end %>
         </div>
